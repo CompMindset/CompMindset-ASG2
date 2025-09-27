@@ -135,6 +135,7 @@ coverage report          # View coverage report
 | `UNIQUE constraint failed` | Username/email already exists - use different values |
 | Database errors | Try: `flask initialize` (reset) or `rm temp-database.db && flask init` |
 | Import errors | Ensure virtual environment is activated and dependencies installed |
+| `pkg_resources` warnings | Safe to ignore - Flask-Admin uses deprecated package (functionality works fine) |
 
 ### Virtual Environment Management
 ```bash
