@@ -216,4 +216,4 @@ requirements.txt     # Dependencies
 
 ---
 
-**License:** Academic use for coursework.
+**License:** Academic use for assignment 1.
