@@ -8,15 +8,14 @@ A command-line rostering system built from the **uwidcit/flaskmvc** template for
 - **Auth**: Hashed passwords (Werkzeug) + JWT login (Flask-JWT-Extended)  
 - **MVC architecture**: Models in `App/models`, controllers in `App/controllers`, CLI in `wsgi.py`
 
-## Prerequisites
+## Prerequisites 
 - **Python 3.9+** (code uses Python 3.9 compatible type annotations)
 - **Virtual environment** (required for flask commands)
 - **Dependencies** from requirements.txt (includes Flask, SQLAlchemy, etc.)
-
 ---
 
 ## Quick Start
-### 1. Create Virtual Environment
+### 1. Create Virtual Environment (needed to run the code)
 ```bash
 # Windows
 py -3.9 -m venv .venv
