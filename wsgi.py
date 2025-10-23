@@ -1,3 +1,7 @@
+import warnings
+# Suppress pkg_resources deprecation warning from Flask-Admin
+warnings.filterwarnings("ignore", message="pkg_resources is deprecated as an API")
+
 import click
 from flask.cli import AppGroup
 from App import create_app
