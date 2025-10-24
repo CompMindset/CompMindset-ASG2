@@ -17,8 +17,9 @@ from App.controllers import (
 LOGGER = logging.getLogger(__name__)
 
 '''
-   Unit Tests
+    Unit Tests
 '''
+@pytest.mark.unit
 class UserUnitTests(unittest.TestCase):
 
     def test_new_user(self):
@@ -56,10 +57,12 @@ def empty_db():
     db.drop_all()
 
 
+@pytest.mark.integration
 def test_authenticate():
     user = create_user("STAFF", "Bob Smith", "bob@email.com", "bob", "bobpass")
     assert login("bob", "bobpass") != None
 
+@pytest.mark.integration
 class UsersIntegrationTests(unittest.TestCase):
 
     def test_create_user(self):
