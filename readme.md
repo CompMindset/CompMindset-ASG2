@@ -122,6 +122,28 @@ coverage run -m pytest   # Run with coverage
 coverage report          # View coverage report
 ```
 
+### Run unit vs. integration separately
+tag tests using pytest markers configured in `pytest.ini`:
+
+```ini
+[pytest]
+testpaths = App/tests
+markers =
+	unit: unit tests that validate small, isolated logic
+	integration: integration tests that exercise DB, controllers, or API flows
+```
+
+Run only unit tests:
+```bash
+pytest -q -m unit
+```
+
+Run only integration tests:
+```bash
+pytest -q -m integration
+```
+```
+
 ---
 ## Troubleshooting
 
