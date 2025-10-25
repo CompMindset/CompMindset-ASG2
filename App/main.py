@@ -36,6 +36,10 @@ def create_app(overrides={}):
     @jwt.invalid_token_loader
     @jwt.unauthorized_loader
     def custom_unauthorized_response(error):
+        from flask import request, jsonify
+        # Return JSON for API requests, HTML for browser requests
+        if request.path.startswith('/api/'):
+            return jsonify({'msg': str(error)}), 401
         return render_template('401.html', error=error), 401
     app.app_context().push()
     return app
