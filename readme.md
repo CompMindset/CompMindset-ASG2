@@ -9,7 +9,7 @@ A command-line rostering system built from the **uwidcit/flaskmvc** template for
 - **MVC architecture**: Models in `App/models`, controllers in `App/controllers`, CLI in `wsgi.py`
 
 ## Prerequisites 
-- **Python 3.9+** (code uses Python 3.9 compatible type annotations)
+- **Python 3.9+** (code is 3.9-compatible; tested with Python 3.12+)
 - **Virtual environment** (required for flask commands)
 - **Dependencies** from requirements.txt (includes Flask, SQLAlchemy, etc.)
 ---
@@ -18,7 +18,9 @@ A command-line rostering system built from the **uwidcit/flaskmvc** template for
 ### 1. Create Virtual Environment (needed to run the code)
 ```bash
 # Windows
-py -3.9 -m venv .venv
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+# or (CMD)
 .venv\Scripts\activate.bat
 
 # macOS/Linux  
@@ -122,6 +124,28 @@ coverage run -m pytest   # Run with coverage
 coverage report          # View coverage report
 ```
 
+### Run unit vs. integration separately
+tag tests using pytest markers configured in `pytest.ini`:
+
+```ini
+[pytest]
+testpaths = App/tests
+markers =
+	unit: unit tests that validate small, isolated logic
+	integration: integration tests that exercise DB, controllers, or API flows
+```
+
+Run only unit tests:
+```bash
+pytest -q -m unit
+```
+
+Run only integration tests:
+```bash
+pytest -q -m integration
+```
+```
+
 ---
 ## Troubleshooting
 
@@ -140,11 +164,12 @@ coverage report          # View coverage report
 ```bash
 # Create virtual environment
 python3 -m venv .venv  # Linux/macOS
-py -3.9 -m venv .venv  # Windows
+python -m venv .venv   # Windows
 
 # Activate virtual environment
-source .venv/bin/activate     # Linux/macOS
-.venv\Scripts\activate.bat    # Windows CMD
+source .venv/bin/activate      # Linux/macOS
+.venv\Scripts\Activate.ps1     # Windows PowerShell
+.venv\Scripts\activate.bat     # Windows CMD
 
 # Deactivate virtual environment
 deactivate
@@ -162,7 +187,8 @@ pip install -r requirements.txt
 
 # Windows
 rmdir /s /q .venv
-py -3.9 -m venv .venv
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 .venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
